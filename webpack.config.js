@@ -42,15 +42,11 @@ const config = {
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true,
-              plugins: [
-                autoprefixer({
-                  'browsers': [
-                    '> 1%',
-                    'last 3 versions',
-                  ],
-                })
-              ],
+              postcssOptions: {
+                plugins: [
+                  ['postcss-preset-env'],
+                ],
+              },
             },
           },
           {
@@ -74,13 +70,7 @@ const config = {
         use: {
           loader: 'babel-loader',
           options: {
-            'presets': [
-              ['env', {
-                'targets': {
-                  'browsers': ['> 1%', 'IE 11']
-                }
-              }]
-            ]
+            presets: ['@babel/preset-env']
           }
         }
       }
