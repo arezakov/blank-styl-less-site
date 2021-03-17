@@ -28,7 +28,7 @@ const config = {
         }
       },
       {
-        test: /\.(less|css)$/,
+        test: /\.(less|styl|css)$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
