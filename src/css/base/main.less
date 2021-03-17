@@ -13,12 +13,14 @@ body {
   color: @primary;
   background-color: @layout;
 }
+
 a {
   transition: color;
+  &:hover {
+    color: @active1;
+  }
 }
-a:hover {
-  color: @active1;
-}
+
 img {
   max-width: 100%;
 }
