@@ -13,6 +13,7 @@ const config = {
   entry: {
     main: './src/index.js',
   },
+  target: 'web',
   mode: isProd ? 'production' : 'development',
   output: {
     chunkFilename: filename('js'),
