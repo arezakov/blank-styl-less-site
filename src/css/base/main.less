@@ -1,0 +1,24 @@
+body, html {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga', 'kern';
+  text-size-adjust: 100%;
+  font: @body;
+  color: @primary;
+  background-color: @layout;
+}
+a {
+  transition: color;
+}
+a:hover {
+  color: @active1;
+}
+img {
+  max-width: 100%;
+}

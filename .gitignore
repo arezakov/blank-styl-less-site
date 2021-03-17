@@ -1,0 +1,12 @@
+# General files
+*~
+.DS_Store
+
+# Build files
+yarn-error.log
+npm-debug.log
+node_modules/
+tmp/
+
+# IDE files
+.idea/
