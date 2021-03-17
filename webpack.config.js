@@ -6,13 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const env = process.env.NODE_ENV || 'development';
 const isProd = env === 'production';
 
-/**
- * Используем `chunkhash` только в продакшен сборке так как он значительно
- * замедляет сборку + не позволяет использовать HMR.
- */
-const hashPattern = isProd ? 'chunkhash' : 'hash';
 
-const filename = ext => isProd ? `[name].[hash].${ext}` : `[name].${ext}`;
+const filename = ext => isProd ? `[name].[contenthash].${ext}` : `[name].${ext}`;
 
 const config = {
   entry: {
@@ -62,7 +57,7 @@ const config = {
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.ttf$|\.eot$|\.wav$|\.mp3$/,
-        use: 'file-loader'
+        type: 'asset/resource'
       },
       {
         test: /\.js$/,
