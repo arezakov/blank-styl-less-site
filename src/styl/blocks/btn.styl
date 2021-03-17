@@ -1,0 +1,23 @@
+.btn
+  background-color $active1
+  height 45px
+  line-height 45px
+  -webkit-appearance none
+  white-space nowrap
+  color #fff
+  font-family $display
+  font-size 22px
+  padding 0 40px
+  text-decoration none
+  text-transform uppercase
+  display inline-block
+  border none
+  transition background $hover
+  transform skewX(-20deg)
+  &:hover
+    color #fff
+    background-color lighten($active1, 10%)
+
+  &__content
+    display block
+    transform skewX(20deg)

@@ -1,0 +1,31 @@
+.feed
+  display flex
+  flex-wrap wrap
+
+  &_indent_60
+    margin -30px
+
+  &_indent_40
+    margin -20px
+
+  &_indent_20
+    margin -10px
+
+  &__item
+    flex 0 1 0
+    min-width auto
+
+    .feed_3 &
+      flex-basis (100% / 3)
+
+    .feed_2 &
+      flex-basis 50%
+
+    .feed_indent_60 &
+      padding 30px
+
+    .feed_indent_40 &
+      padding 20px
+
+    .feed_indent_20 &
+      padding 10px

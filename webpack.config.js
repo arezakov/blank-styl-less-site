@@ -6,8 +6,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const env = process.env.NODE_ENV || 'development';
 const isProd = env === 'production';
 
+const filename = ext => isProd
+  ? `[name].[contenthash].${ext}`
+  : `[name].${ext}`;
 
-const filename = ext => isProd ? `[name].[contenthash].${ext}` : `[name].${ext}`;
+const cssTransforms = [
+  {
+    loader: MiniCssExtractPlugin.loader,
+  },
+  'css-loader',
+  {
+    loader: 'postcss-loader',
+    options: {
+      postcssOptions: {
+        plugins: [
+          ['postcss-preset-env'],
+        ],
+      },
+    },
+  },
+];
 
 const config = {
   entry: {
@@ -29,31 +47,17 @@ const config = {
         }
       },
       {
-        test: /\.(less|styl|css)$/,
+        test: /\.(less|css)$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  ['postcss-preset-env'],
-                ],
-              },
-            },
-          },
-          {
-            loader: 'less-loader',
-            options: {
-              lessOptions: {
-                paths: [path.resolve(__dirname, 'src/css')],
-                sourceMap: true,
-              },
-            },
-          },
+          ...cssTransforms,
+          'less-loader',
+        ]
+      },
+      {
+        test: /\.styl$/,
+        use: [
+          ...cssTransforms,
+          'stylus-loader',
         ]
       },
       {
